@@ -22,11 +22,11 @@ class Anime:
         if env.get("ARIA2_HOST"):
             a_host = env["ARIA2_HOST"]
             if not a_host.startswith("http"):
-                a_host = "wss://" + a_host
+                a_host = "https://" + a_host
         else:
             a_host = config["aria2"]["host"]
             if not a_host.startswith("http"):
-                a_host = "wss://" + a_host
+                a_host = "https://" + a_host
 
         a_port = int(env.get("ARIA2_PORT") or config["aria2"]["port"] or 6800)
 
