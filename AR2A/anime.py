@@ -22,11 +22,11 @@ class Anime:
         if env.get("ARIA2_HOST"):
             a_host = env["ARIA2_HOST"]
             if not a_host.startswith("http"):
-                a_host = "https://" + a_host
+                a_host = "http://" + a_host
         else:
             a_host = config["aria2"]["host"]
             if not a_host.startswith("http"):
-                a_host = "https://" + a_host
+                a_host = "http://" + a_host
 
         a_port = int(env.get("ARIA2_PORT") or config["aria2"]["port"] or 6800)
 
@@ -53,11 +53,11 @@ class Anime:
         self.url = env.get("BASE_URL") or config.get("base_url") or None
         mongo_url = env.get("DATABASE") or config["mongo_url"]
 
-        self.rss = rss["Anime"]
+        self.rss = rss["Op3"]
         self.template = Template(rss["Template"])
 
         client = MongoClient(mongo_url)
-        self.db = client["Anime"]
+        self.db = client["Op3"]
 
     def readRSS(self, send=None):
         if send != None:
